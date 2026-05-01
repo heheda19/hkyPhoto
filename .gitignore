@@ -1,0 +1,10 @@
+.worktrees/
+__pycache__/
+*.py[cod]
+*.sqlite3
+.env
+node_modules/
+dist/
+.vite/
+*.log
+.superpowers/
