@@ -1,0 +1,99 @@
+<h2>数据模型 &amp; API 设计</h2>
+<p class="subtitle">Django Models + REST API 端点</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Album 模型</div>
+    <div class="mockup-body">
+      <table style="width:100%;font-size:12px;font-family:monospace">
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">id</td><td style="color:#94a3b8">UUID</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">name</td><td style="color:#94a3b8">CharField(100)</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">description</td><td style="color:#94a3b8">TextField</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">cover</td><td style="color:#94a3b8">FK → Photo</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">sort_order</td><td style="color:#94a3b8">IntegerField</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">created_at</td><td style="color:#94a3b8">DateTime</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">updated_at</td><td style="color:#94a3b8">DateTime</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">Photo 模型</div>
+    <div class="mockup-body">
+      <table style="width:100%;font-size:12px;font-family:monospace">
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">id</td><td style="color:#94a3b8">UUID</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">album</td><td style="color:#94a3b8">FK → Album</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">title</td><td style="color:#94a3b8">CharField(200)</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">oss_key</td><td style="color:#94a3b8">CharField(500)</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">width</td><td style="color:#94a3b8">Integer</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">height</td><td style="color:#94a3b8">Integer</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">file_size</td><td style="color:#94a3b8">BigInteger</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">taken_at</td><td style="color:#94a3b8">DateTime (EXIF)</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">uploaded_at</td><td style="color:#94a3b8">DateTime</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top:16px">
+  <div class="mockup-header">REST API 端点</div>
+  <div class="mockup-body">
+    <table style="width:100%;font-size:12px;font-family:monospace;border-collapse:collapse">
+      <tr style="border-bottom:1px solid #1e293b">
+        <td style="padding:6px 10px"><span style="background:#064e3b;color:#4ade80;padding:1px 6px;border-radius:3px;font-size:10px">POST</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/auth/login/</td>
+        <td style="padding:6px 10px;color:#94a3b8">管理员登录 → JWT Token</td>
+      </tr>
+      <tr style="border-bottom:1px solid #1e293b">
+        <td style="padding:6px 10px"><span style="background:#1e40af;color:#60a5fa;padding:1px 6px;border-radius:3px;font-size:10px">GET</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/albums/</td>
+        <td style="padding:6px 10px;color:#94a3b8">相册列表</td>
+      </tr>
+      <tr style="border-bottom:1px solid #1e293b">
+        <td style="padding:6px 10px"><span style="background:#064e3b;color:#4ade80;padding:1px 6px;border-radius:3px;font-size:10px">POST</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/albums/</td>
+        <td style="padding:6px 10px;color:#94a3b8">创建相册 <span style="color:#fbbf24;font-size:10px">🔐</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #1e293b">
+        <td style="padding:6px 10px"><span style="background:#1e40af;color:#60a5fa;padding:1px 6px;border-radius:3px;font-size:10px">GET</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/albums/{id}/</td>
+        <td style="padding:6px 10px;color:#94a3b8">相册详情（含照片列表）</td>
+      </tr>
+      <tr style="border-bottom:1px solid #1e293b">
+        <td style="padding:6px 10px"><span style="background:#b45309;color:#fbbf24;padding:1px 6px;border-radius:3px;font-size:10px">DELETE</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/albums/{id}/</td>
+        <td style="padding:6px 10px;color:#94a3b8">删除相册 <span style="color:#fbbf24;font-size:10px">🔐</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #1e293b">
+        <td style="padding:6px 10px"><span style="background:#064e3b;color:#4ade80;padding:1px 6px;border-radius:3px;font-size:10px">POST</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/upload/presigned/</td>
+        <td style="padding:6px 10px;color:#94a3b8">获取 OSS 上传凭证 <span style="color:#fbbf24;font-size:10px">🔐</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #1e293b">
+        <td style="padding:6px 10px"><span style="background:#064e3b;color:#4ade80;padding:1px 6px;border-radius:3px;font-size:10px">POST</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/photos/</td>
+        <td style="padding:6px 10px;color:#94a3b8">保存照片元数据 <span style="color:#fbbf24;font-size:10px">🔐</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #1e293b">
+        <td style="padding:6px 10px"><span style="background:#b45309;color:#fbbf24;padding:1px 6px;border-radius:3px;font-size:10px">DELETE</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/photos/{id}/</td>
+        <td style="padding:6px 10px;color:#94a3b8">删除照片 <span style="color:#fbbf24;font-size:10px">🔐</span></td>
+      </tr>
+      <tr>
+        <td style="padding:6px 10px"><span style="background:#1e40af;color:#60a5fa;padding:1px 6px;border-radius:3px;font-size:10px">GET</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/photos/?ordering=-taken_at</td>
+        <td style="padding:6px 10px;color:#94a3b8">时间线视图（分页）</td>
+      </tr>
+    </table>
+    <div style="margin-top:10px;font-size:11px;color:#64748b">🔐 需要 JWT 认证的端点</div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:16px">
+  <h3>关键设计要点</h3>
+  <ul style="font-size:13px;color:#cbd5e1;line-height:1.8">
+    <li><strong>上传走 OSS 直传</strong> — 前端获取 Presigned URL 后直接上传到 OSS，不经 Django，不占服务器带宽</li>
+    <li><strong>缩略图用 OSS 图片处理</strong> — 通过 URL 参数 ?x-oss-process=image/resize,w_400 实时获取缩略图，无需后端处理</li>
+    <li><strong>照片以 taken_at 排序</strong> — 上传时读取 EXIF 拍摄时间，无 EXIF 则用上传时间</li>
+    <li><strong>管理端点统一加 JWT</strong> — 查询类接口公开，写操作需认证</li>
+  </ul>
+</div>

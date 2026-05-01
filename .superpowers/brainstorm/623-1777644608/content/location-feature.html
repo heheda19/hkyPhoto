@@ -1,0 +1,101 @@
+<h2>地点自动分类设计</h2>
+<p class="subtitle">从 EXIF GPS 自动提取 + 地点聚合</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Location 模型（新增）</div>
+    <div class="mockup-body">
+      <table style="width:100%;font-size:12px;font-family:monospace">
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">id</td><td style="color:#94a3b8">UUID</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">name</td><td style="color:#94a3b8">CharField(200)</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">latitude</td><td style="color:#94a3b8">FloatField</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">longitude</td><td style="color:#94a3b8">FloatField</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">city</td><td style="color:#94a3b8">CharField</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">province</td><td style="color:#94a3b8">CharField</td></tr>
+        <tr style="color:#38bdf8"><td style="padding:4px 8px">country</td><td style="color:#94a3b8">CharField</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">Photo 新增字段</div>
+    <div class="mockup-body">
+      <table style="width:100%;font-size:12px;font-family:monospace">
+        <tr style="color:#34d399"><td style="padding:4px 8px">+ location</td><td style="color:#94a3b8">FK → Location (nullable)</td></tr>
+        <tr style="color:#34d399"><td style="padding:4px 8px">+ latitude</td><td style="color:#94a3b8">FloatField (nullable)</td></tr>
+        <tr style="color:#34d399"><td style="padding:4px 8px">+ longitude</td><td style="color:#94a3b8">FloatField (nullable)</td></tr>
+      </table>
+      <div style="margin-top:10px;font-size:11px;color:#64748b">保留原始坐标用于精确查询，同时关联聚合后的 Location</div>
+    </div>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top:16px">
+  <div class="mockup-header">上传时自动提取 GPS 流程</div>
+  <div class="mockup-body">
+    <div style="display:flex;align-items:center;gap:10px;font-size:12px;font-family:monospace;padding:12px 0">
+      <div style="flex:1;background:#1e293b;padding:10px;border-radius:8px;text-align:center">
+        <span style="color:#fbbf24">1. 读取 EXIF</span><br>
+        <span style="color:#94a3b8;font-size:11px">前端用 exif-js 读取<br>GPS 坐标</span>
+      </div>
+      <span style="color:#64748b;font-size:16px">→</span>
+      <div style="flex:1;background:#1e293b;padding:10px;border-radius:8px;text-align:center">
+        <span style="color:#fbbf24">2. 反向地理编码</span><br>
+        <span style="color:#94a3b8;font-size:11px">坐标 → 城市/省份/国家<br>（高德地图 API）</span>
+      </div>
+      <span style="color:#64748b;font-size:16px">→</span>
+      <div style="flex:1;background:#1e293b;padding:10px;border-radius:8px;text-align:center">
+        <span style="color:#fbbf24">3. 合并到地点</span><br>
+        <span style="color:#94a3b8;font-size:11px">相同城市自动归入<br>同一个 Location</span>
+      </div>
+      <span style="color:#64748b;font-size:16px">→</span>
+      <div style="flex:1;background:#1e293b;padding:10px;border-radius:8px;text-align:center">
+        <span style="color:#fbbf24">4. 前端展示</span><br>
+        <span style="color:#94a3b8;font-size:11px">"地点" 页面按城市<br>分组浏览</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top:16px">
+  <div class="mockup-header">新增 API</div>
+  <div class="mockup-body">
+    <table style="width:100%;font-size:12px;font-family:monospace;border-collapse:collapse">
+      <tr style="border-bottom:1px solid #1e293b">
+        <td style="padding:6px 10px"><span style="background:#1e40af;color:#60a5fa;padding:1px 6px;border-radius:3px;font-size:10px">GET</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/locations/</td>
+        <td style="padding:6px 10px;color:#94a3b8">地点列表（按照片数量排序）</td>
+      </tr>
+      <tr>
+        <td style="padding:6px 10px"><span style="background:#1e40af;color:#60a5fa;padding:1px 6px;border-radius:3px;font-size:10px">GET</span></td>
+        <td style="padding:6px 10px;color:#e2e8f0">/api/locations/{id}/photos/</td>
+        <td style="padding:6px 10px;color:#94a3b8">该地点的所有照片</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top:16px">
+  <div class="mockup-header">前端 "地点" 页面 — 布局示意</div>
+  <div class="mockup-body">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+      <div style="background:#1e293b;border-radius:10px;overflow:hidden">
+        <div class="placeholder" style="height:100px;display:flex;align-items:center;justify-content:center;font-size:11px">📍 杭州 · 12张</div>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;overflow:hidden">
+        <div class="placeholder" style="height:100px;display:flex;align-items:center;justify-content:center;font-size:11px">📍 东京 · 8张</div>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;overflow:hidden">
+        <div class="placeholder" style="height:100px;display:flex;align-items:center;justify-content:center;font-size:11px">📍 巴黎 · 15张</div>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;overflow:hidden">
+        <div class="placeholder" style="height:100px;display:flex;align-items:center;justify-content:center;font-size:11px">📍 大理 · 20张</div>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;overflow:hidden">
+        <div class="placeholder" style="height:100px;display:flex;align-items:center;justify-content:center;font-size:11px">📍 纽约 · 6张</div>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;overflow:hidden">
+        <div class="placeholder" style="height:100px;display:flex;align-items:center;justify-content:center;font-size:11px">📍 京都 · 9张</div>
+      </div>
+    </div>
+  </div>
+</div>

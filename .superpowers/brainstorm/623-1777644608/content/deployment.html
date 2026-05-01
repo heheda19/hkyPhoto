@@ -1,0 +1,121 @@
+<h2>PWA &amp; 部署设计</h2>
+<p class="subtitle">响应式 + PWA 离线支持 + 云平台部署</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">PWA 配置</div>
+    <div class="mockup-body">
+      <table style="width:100%;font-size:12px">
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;font-weight:600;color:#e2e8f0">manifest.json</td>
+          <td style="padding:5px 8px;color:#94a3b8">图标、名称、主题色、全屏模式</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;font-weight:600;color:#e2e8f0">Service Worker</td>
+          <td style="padding:5px 8px;color:#94a3b8">缓存静态资源 + 已浏览照片离线可用</td>
+        </tr>
+        <tr>
+          <td style="padding:5px 8px;font-weight:600;color:#e2e8f0">响应式断点</td>
+          <td style="padding:5px 8px;color:#94a3b8">手机 &lt;768px · 平板 768-1024px · 桌面 &gt;1024px</td>
+        </tr>
+      </table>
+      <div style="margin-top:10px;font-size:11px;color:#64748b">
+        手机端访问 → 浏览器提示"添加到主屏幕" → 像原生 App 一样使用
+      </div>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">技术栈一览</div>
+    <div class="mockup-body">
+      <table style="width:100%;font-size:12px;font-family:monospace">
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:4px 8px;color:#94a3b8">后端</td>
+          <td style="padding:4px 8px;color:#e2e8f0">Django 4.x + DRF</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:4px 8px;color:#94a3b8">前端</td>
+          <td style="padding:4px 8px;color:#e2e8f0">Vue 3 + Vite + Element Plus</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:4px 8px;color:#94a3b8">数据库</td>
+          <td style="padding:4px 8px;color:#e2e8f0">SQLite (开发) → PostgreSQL (生产)</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:4px 8px;color:#94a3b8">存储</td>
+          <td style="padding:4px 8px;color:#e2e8f0">阿里云 OSS</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:4px 8px;color:#94a3b8">地理编码</td>
+          <td style="padding:4px 8px;color:#e2e8f0">高德地图 API</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:4px 8px;color:#94a3b8">反向代理</td>
+          <td style="padding:4px 8px;color:#e2e8f0">Nginx + Gunicorn</td>
+        </tr>
+        <tr>
+          <td style="padding:4px 8px;color:#94a3b8">域名</td>
+          <td style="padding:4px 8px;color:#e2e8f0">HTTPS (Let's Encrypt)</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top:16px">
+  <div class="mockup-header">部署架构</div>
+  <div class="mockup-body">
+    <div style="background:#1e293b;border-radius:12px;padding:24px;font-family:monospace;font-size:12px">
+      <div style="text-align:center;margin-bottom:12px">
+        <span style="color:#64748b;font-size:11px">🌐 互联网</span>
+      </div>
+      <div style="text-align:center;margin-bottom:8px">
+        <span style="font-size:18px;color:#64748b">↓</span>
+      </div>
+      <div style="background:#0f172a;border:2px solid #334155;border-radius:8px;padding:14px;text-align:center;margin-bottom:8px">
+        <span style="color:#38bdf8;font-weight:700">Nginx</span><br>
+        <span style="color:#94a3b8;font-size:10px">HTTPS 终止 · 静态文件 · 反向代理</span>
+      </div>
+      <div style="display:flex;gap:10px">
+        <div style="flex:1;background:#0f172a;border:2px solid #334155;border-radius:8px;padding:12px;text-align:center">
+          <span style="color:#4ade80;font-weight:700">Gunicorn</span><br>
+          <span style="color:#94a3b8;font-size:10px">Django WSGI</span>
+        </div>
+        <div style="flex:1;background:#0f172a;border:2px solid #334155;border-radius:8px;padding:12px;text-align:center">
+          <span style="color:#fbbf24;font-weight:700">PostgreSQL</span><br>
+          <span style="color:#94a3b8;font-size:10px">数据库</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:8px">
+        <div style="flex:1;background:#0f172a;border:2px solid #334155;border-radius:8px;padding:12px;text-align:center">
+          <span style="color:#f472b6;font-weight:700">阿里云 OSS</span><br>
+          <span style="color:#94a3b8;font-size:10px">照片原图 + 缩略图</span>
+        </div>
+        <div style="flex:1;background:#0f172a;border:2px solid #334155;border-radius:8px;padding:12px;text-align:center">
+          <span style="color:#c084fc;font-weight:700">高德 API</span><br>
+          <span style="color:#94a3b8;font-size:10px">坐标 → 城市名</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pros-cons" style="margin-top:16px">
+  <div class="pros"><h4>部署清单</h4>
+    <ul style="font-size:12px">
+      <li>阿里云 ECS 或轻量应用服务器</li>
+      <li>域名 + SSL 证书（Let's Encrypt 免费）</li>
+      <li>阿里云 OSS Bucket + AccessKey</li>
+      <li>高德地图 Web 服务 API Key</li>
+      <li>Nginx + Gunicorn + PostgreSQL</li>
+    </ul>
+  </div>
+  <div class="cons"><h4>安全注意事项</h4>
+    <ul style="font-size:12px">
+      <li>OSS Bucket 设为私有，仅通过 Presigned URL 访问</li>
+      <li>API Key 通过环境变量注入，不提交仓库</li>
+      <li>Django SECRET_KEY 独立随机生成</li>
+      <li>管理端 JWT 有效期设置合理（如 7 天）</li>
+      <li>Nginx 配置 rate limiting 防暴力破解</li>
+    </ul>
+  </div>
+</div>

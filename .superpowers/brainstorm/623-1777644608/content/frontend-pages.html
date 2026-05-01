@@ -1,0 +1,121 @@
+<h2>前端页面结构 &amp; 路由</h2>
+<p class="subtitle">Vue 3 + Vue Router + Element Plus</p>
+
+<div class="mockup" style="margin-bottom:10px">
+  <div class="mockup-header">导航结构（响应式）</div>
+  <div class="mockup-body">
+    <div class="mock-nav" style="font-size:13px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-weight:700">📷 MyAlbum</span>
+      <span style="display:flex;gap:16px;font-size:12px">
+        <span>相册</span><span>时间线</span><span>地点</span><span>🔐 管理</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">页面路由</div>
+    <div class="mockup-body">
+      <table style="width:100%;font-size:12px;font-family:monospace">
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;color:#e2e8f0">/</td>
+          <td style="padding:5px 8px;color:#94a3b8">首页 · 精选展示</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;color:#e2e8f0">/albums</td>
+          <td style="padding:5px 8px;color:#94a3b8">相册列表</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;color:#e2e8f0">/albums/:id</td>
+          <td style="padding:5px 8px;color:#94a3b8">相册详情 · 照片网格</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;color:#e2e8f0">/timeline</td>
+          <td style="padding:5px 8px;color:#94a3b8">时间线瀑布流</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;color:#e2e8f0">/locations</td>
+          <td style="padding:5px 8px;color:#94a3b8">地点列表</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;color:#e2e8f0">/locations/:id</td>
+          <td style="padding:5px 8px;color:#94a3b8">地点照片</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;color:#e2e8f0">/admin</td>
+          <td style="padding:5px 8px;color:#94a3b8">管理页 · 上传/管理 <span style="color:#fbbf24;font-size:10px">🔐</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">核心组件</div>
+    <div class="mockup-body">
+      <table style="width:100%;font-size:12px">
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;font-weight:600;color:#e2e8f0">PhotoGrid</td>
+          <td style="padding:5px 8px;color:#94a3b8">Masonry 瀑布流照片网格</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;font-weight:600;color:#e2e8f0">PhotoCard</td>
+          <td style="padding:5px 8px;color:#94a3b8">单张照片卡片 + 悬浮信息</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;font-weight:600;color:#e2e8f0">Lightbox</td>
+          <td style="padding:5px 8px;color:#94a3b8">全屏灯箱 · 左右滑动/缩放</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;font-weight:600;color:#e2e8f0">UploadZone</td>
+          <td style="padding:5px 8px;color:#94a3b8">拖拽/点选上传 · 进度条</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1e293b">
+          <td style="padding:5px 8px;font-weight:600;color:#e2e8f0">AlbumCard</td>
+          <td style="padding:5px 8px;color:#94a3b8">相册封面卡片</td>
+        </tr>
+        <tr>
+          <td style="padding:5px 8px;font-weight:600;color:#e2e8f0">LocationCard</td>
+          <td style="padding:5px 8px;color:#94a3b8">地点封面卡片 · 照片数</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="split" style="margin-top:10px">
+  <div class="mockup">
+    <div class="mockup-header">手机端 — 相册详情</div>
+    <div class="mockup-body">
+      <div style="background:#0f172a;border-radius:6px;padding:12px">
+        <div class="mock-nav" style="font-size:10px;padding:4px 8px;margin-bottom:10px">← 旅行随拍</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px">
+          <div class="placeholder" style="height:60px"></div>
+          <div class="placeholder" style="height:75px"></div>
+          <div class="placeholder" style="height:55px"></div>
+          <div class="placeholder" style="height:65px"></div>
+          <div class="placeholder" style="height:55px"></div>
+          <div class="placeholder" style="height:70px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">手机端 — 时间线</div>
+    <div class="mockup-body">
+      <div style="background:#0f172a;border-radius:6px;padding:12px">
+        <div style="color:#94a3b8;font-size:10px;margin-bottom:6px">2024 · 3月</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+          <div class="placeholder" style="height:80px"></div>
+          <div class="placeholder" style="height:100px"></div>
+          <div class="placeholder" style="height:70px"></div>
+          <div class="placeholder" style="height:90px"></div>
+        </div>
+        <div style="color:#94a3b8;font-size:10px;margin:8px 0 6px">2024 · 2月</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+          <div class="placeholder" style="height:75px"></div>
+          <div class="placeholder" style="height:85px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
