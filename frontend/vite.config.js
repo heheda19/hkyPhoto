@@ -43,6 +43,11 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
+  build: {
+    outDir: resolve(__dirname, '../backend/static'),
+    emptyOutDir: true,
+    assetsDir: 'assets',
+  },
   server: {
     proxy: {
       '/api': 'http://127.0.0.1:8000',
