@@ -1,0 +1,1 @@
+import{n as e}from"./auth-HYTE8bP4.js";function t(t=1){return e.get(`/photos/`,{params:{ordering:`-taken_at`,page:t}})}function n(t,n){return e.post(`/photos/presigned_url/`,{filename:t,content_type:n})}function r(t){return e.post(`/photos/`,t)}export{n,t as r,r as t};

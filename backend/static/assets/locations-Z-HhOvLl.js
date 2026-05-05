@@ -1,0 +1,1 @@
+import{n as e}from"./auth-HYTE8bP4.js";function t(){return e.get(`/locations/`)}function n(t,n=1){return e.get(`/locations/${t}/photos/`,{params:{page:n}})}export{t as n,n as t};

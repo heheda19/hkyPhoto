@@ -32,6 +32,9 @@ class PhotoViewSet(viewsets.ModelViewSet):
         if location_id:
             queryset = queryset.filter(location_id=location_id)
         ordering = request.query_params.get('ordering', '-taken_at')
+        allowed_orderings = {'taken_at', '-taken_at', 'uploaded_at', '-uploaded_at', 'file_size', '-file_size'}
+        if ordering not in allowed_orderings:
+            ordering = '-taken_at'
         queryset = queryset.order_by(ordering)
         page = self.paginate_queryset(queryset)
         if page is not None:
@@ -42,11 +45,15 @@ class PhotoViewSet(viewsets.ModelViewSet):
     def presigned_url(self, request):
         serializer = PresignedUrlSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        content_type = serializer.validated_data['content_type']
+        allowed_cts = {'image/jpeg', 'image/png', 'image/heic', 'image/heif', 'image/webp', 'image/tiff'}
+        if content_type not in allowed_cts:
+            content_type = 'image/jpeg'
         filename = serializer.validated_data['filename']
         ext = filename.rsplit('.', 1)[-1] if '.' in filename else 'jpg'
         oss_key = f"photos/{datetime.now().strftime('%Y/%m')}/{uuid.uuid4().hex}.{ext}"
         bucket = get_oss_bucket()
-        url = bucket.sign_url('PUT', oss_key, 300, headers={'Content-Type': serializer.validated_data['content_type']})
+        url = bucket.sign_url('PUT', oss_key, 300, headers={'Content-Type': content_type})
         return Response({'oss_key': oss_key, 'upload_url': url})
 
     def perform_create(self, serializer):
@@ -84,5 +91,5 @@ class PhotoViewSet(viewsets.ModelViewSet):
                 )
                 photo.location = location
                 photo.save(update_fields=['location'])
-        except Exception:
+        except (requests.RequestException, ValueError, KeyError):
             pass

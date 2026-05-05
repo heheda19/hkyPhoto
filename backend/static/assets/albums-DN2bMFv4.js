@@ -1,0 +1,1 @@
+import{n as e}from"./auth-HYTE8bP4.js";function t(){return e.get(`/albums/`)}function n(t){return e.get(`/albums/${t}/`)}function r(t,n=1){return e.get(`/albums/${t}/photos/`,{params:{page:n}})}function i(t){return e.post(`/albums/`,t)}export{t as i,n,r,i as t};
