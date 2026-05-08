@@ -76,8 +76,8 @@ onMounted(async () => {
 
 <style scoped>
 .page-header { margin-bottom: 24px; }
-.back-link { color: #60a5fa; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 12px; }
-.page-title { font-size: 24px; font-weight: 700; }
-.page-desc { color: #94a3b8; margin-top: 6px; font-size: 14px; }
-.error-msg { color: #f87171; padding: 12px 0; }
+.back-link { color: #3b82f6; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 12px; }
+.page-title { font-size: 24px; font-weight: 700; color: #1e293b; }
+.page-desc { color: #64748b; margin-top: 6px; font-size: 14px; }
+.error-msg { color: #ef4444; padding: 12px 0; }
 </style>

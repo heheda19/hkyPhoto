@@ -3,7 +3,7 @@
     <h2 class="page-title">管理</h2>
 
     <div v-if="!auth.isAuthenticated" class="login-box">
-      <el-card header="管理员登录" style="max-width:400px;margin:60px auto">
+      <el-card header="管理员登录" class="login-card">
         <el-form @submit.prevent="doLogin">
           <el-form-item label="用户名">
             <el-input v-model="username" />
@@ -23,7 +23,7 @@
           <UploadZone :albums="albumList" @uploaded="onUploaded" />
         </el-tab-pane>
         <el-tab-pane label="新建相册" name="album">
-          <el-form @submit.prevent="createAlbum" style="max-width:400px;margin-top:12px">
+          <el-form @submit.prevent="createAlbum" class="album-form">
             <el-form-item label="名称">
               <el-input v-model="newAlbumName" required />
             </el-form-item>
@@ -98,6 +98,16 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.page-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #e2e8f0; }
+.page-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #1e293b; }
 .login-box { padding: 40px 0; }
+.login-card {
+  max-width: 400px; margin: 60px auto;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+.album-form { max-width: 400px; margin-top: 12px; }
 </style>

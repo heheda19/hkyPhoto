@@ -66,7 +66,7 @@ onMounted(() => load())
 </script>
 
 <style scoped>
-.back-link { color: #60a5fa; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 12px; }
-.page-title { font-size: 24px; font-weight: 700; }
-.page-desc { color: #94a3b8; margin-top: 4px; margin-bottom: 20px; }
+.back-link { color: #3b82f6; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 12px; }
+.page-title { font-size: 24px; font-weight: 700; color: #1e293b; }
+.page-desc { color: #64748b; margin-top: 4px; margin-bottom: 20px; }
 </style>

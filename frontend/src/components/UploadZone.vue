@@ -113,9 +113,9 @@ async function startUpload() {
 
 <style scoped>
 .upload-zone { width: 100%; }
-.upload-text { color: #94a3b8; font-size: 14px; margin-top: 8px; }
-.upload-tip { color: #64748b; font-size: 12px; margin-top: 8px; }
+.upload-text { color: #64748b; font-size: 14px; margin-top: 8px; }
+.upload-tip { color: #94a3b8; font-size: 12px; margin-top: 8px; }
 .upload-actions { margin-top: 16px; display: flex; gap: 12px; align-items: center; }
 .upload-progress { margin-top: 20px; }
-.progress-text { color: #94a3b8; font-size: 13px; margin-top: 8px; }
+.progress-text { color: #64748b; font-size: 13px; margin-top: 8px; }
 </style>

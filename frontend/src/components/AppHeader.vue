@@ -14,8 +14,10 @@
 
 <style scoped>
 .app-header {
-  background: #1e293b;
-  border-bottom: 1px solid #334155;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   padding: 0 16px;
   position: sticky;
   top: 0;
@@ -30,7 +32,7 @@
   height: 56px;
 }
 .logo {
-  color: #e2e8f0;
+  color: #1e293b;
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
@@ -40,7 +42,7 @@
   gap: 4px;
 }
 .nav-links a {
-  color: #94a3b8;
+  color: #64748b;
   text-decoration: none;
   padding: 6px 14px;
   border-radius: 6px;
@@ -49,8 +51,8 @@
 }
 .nav-links a:hover,
 .nav-links a.router-link-exact-active {
-  color: #e2e8f0;
-  background: #334155;
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.08);
 }
 @media (max-width: 640px) {
   .logo { font-size: 16px; }

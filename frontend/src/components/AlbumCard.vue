@@ -20,26 +20,33 @@ defineProps({ album: { type: Object, required: true } })
 
 <style scoped>
 .album-card {
-  background: #1e293b;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
   display: block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
-.album-card:hover { transform: translateY(-4px); }
+.album-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
 .album-cover {
   aspect-ratio: 4/3;
-  background: #334155;
+  background: #e2e8f0;
 }
 .album-cover .el-image { width: 100%; height: 100%; }
 .album-cover-placeholder {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
-  color: #64748b;
+  color: #94a3b8;
 }
-.album-info { padding: 12px 14px; }
-.album-info h3 { font-size: 15px; margin-bottom: 4px; color: #e2e8f0; }
+.album-info { padding: 14px 16px; }
+.album-info h3 { font-size: 15px; margin-bottom: 4px; color: #1e293b; }
 .album-info span { font-size: 12px; color: #94a3b8; }
 </style>

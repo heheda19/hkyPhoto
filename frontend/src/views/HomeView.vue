@@ -83,12 +83,12 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.page-title { font-size: 28px; font-weight: 700; color: #e2e8f0; }
-.page-subtitle { color: #94a3b8; margin-bottom: 32px; font-size: 15px; }
+.page-title { font-size: 28px; font-weight: 700; color: #1e293b; }
+.page-subtitle { color: #64748b; margin-bottom: 32px; font-size: 15px; }
 .section { margin-bottom: 40px; }
-.section-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; border-left: 3px solid #3b82f6; padding-left: 10px; }
+.section-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; border-left: 3px solid #3b82f6; padding-left: 10px; color: #1e293b; }
 .section-footer { margin-top: 16px; text-align: right; }
-.see-all { color: #60a5fa; text-decoration: none; font-size: 14px; }
+.see-all { color: #3b82f6; text-decoration: none; font-size: 14px; }
 .album-grid, .location-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

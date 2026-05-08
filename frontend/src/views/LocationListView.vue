@@ -30,11 +30,11 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.page-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #e2e8f0; }
+.page-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #1e293b; }
 .location-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
 }
-.loading, .empty-state { text-align: center; padding: 80px 20px; color: #64748b; }
+.loading, .empty-state { text-align: center; padding: 80px 20px; color: #94a3b8; }
 </style>

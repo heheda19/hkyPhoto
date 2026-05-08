@@ -77,11 +77,11 @@ onMounted(() => load())
 </script>
 
 <style scoped>
-.page-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #e2e8f0; }
+.page-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #1e293b; }
 .timeline-header {
-  font-size: 16px; font-weight: 600; color: #94a3b8;
-  padding: 16px 0 12px; border-top: 1px solid #1e293b;
+  font-size: 16px; font-weight: 600; color: #64748b;
+  padding: 16px 0 12px; border-top: 1px solid #e2e8f0;
   margin-top: 8px;
 }
-.loading, .load-more { text-align: center; padding: 32px; }
+.loading, .load-more { text-align: center; padding: 32px; color: #64748b; }
 </style>

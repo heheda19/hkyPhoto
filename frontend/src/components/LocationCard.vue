@@ -17,18 +17,27 @@ defineProps({ location: { type: Object, required: true } })
 
 <style scoped>
 .location-card {
-  background: #1e293b; border-radius: 12px; overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
   text-decoration: none; color: inherit; display: block;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
-.location-card:hover { transform: translateY(-4px); }
-.location-cover { aspect-ratio: 16/10; background: #334155; }
+.location-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+.location-cover { aspect-ratio: 16/10; background: #e2e8f0; }
 .location-cover .el-image { width: 100%; height: 100%; }
 .cover-fallback {
   width: 100%; height: 100%; display: flex; align-items: center;
   justify-content: center; font-size: 40px;
 }
-.location-info { padding: 12px 14px; }
-.location-info h3 { font-size: 15px; margin-bottom: 4px; color: #e2e8f0; }
+.location-info { padding: 14px 16px; }
+.location-info h3 { font-size: 15px; margin-bottom: 4px; color: #1e293b; }
 .location-info span { font-size: 12px; color: #94a3b8; }
 </style>
