@@ -31,13 +31,13 @@ defineProps({ location: { type: Object, required: true } })
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
-.location-cover { aspect-ratio: 16/10; background: #e2e8f0; }
+.location-cover { aspect-ratio: 16/10; background: #f5f5f7; }
 .location-cover .el-image { width: 100%; height: 100%; }
 .cover-fallback {
   width: 100%; height: 100%; display: flex; align-items: center;
   justify-content: center; font-size: 40px;
 }
 .location-info { padding: 14px 16px; }
-.location-info h3 { font-size: 15px; margin-bottom: 4px; color: #1e293b; }
-.location-info span { font-size: 12px; color: #94a3b8; }
+.location-info h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; color: #1d1d1f; }
+.location-info span { font-size: 13px; font-weight: 400; color: #86868b; }
 </style>

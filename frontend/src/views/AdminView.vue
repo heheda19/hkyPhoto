@@ -98,7 +98,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.page-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #1e293b; }
+.page-title { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 28px; color: #1d1d1f; }
 .login-box { padding: 40px 0; }
 .login-card {
   max-width: 400px; margin: 60px auto;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link to="/locations" class="back-link">&larr; 返回地点</router-link>
-    <h2 class="page-title">📍 {{ location?.city || location?.name }}</h2>
+    <h2 class="page-title">{{ location?.city || location?.name }}</h2>
     <p v-if="location?.province" class="page-desc">{{ location.province }}{{ location.country ? ' · ' + location.country : '' }}</p>
 
     <PhotoGrid
@@ -66,7 +66,8 @@ onMounted(() => load())
 </script>
 
 <style scoped>
-.back-link { color: #3b82f6; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 12px; }
-.page-title { font-size: 24px; font-weight: 700; color: #1e293b; }
-.page-desc { color: #64748b; margin-top: 4px; margin-bottom: 20px; }
+.back-link { color: #06c; text-decoration: none; font-size: 14px; font-weight: 500; display: inline-block; margin-bottom: 16px; }
+.back-link:hover { text-decoration: underline; }
+.page-title { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: #1d1d1f; }
+.page-desc { color: #86868b; margin-top: 4px; margin-bottom: 24px; font-size: 15px; }
 </style>

@@ -58,8 +58,8 @@ function onTouchEnd(e) {
   background: linear-gradient(rgba(0,0,0,0.6), transparent);
   z-index: 10;
 }
-.lightbox-title { flex: 1; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.lightbox-counter { font-size: 13px; color: #94a3b8; }
+.lightbox-title { flex: 1; font-size: 15px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lightbox-counter { font-size: 13px; color: #86868b; }
 .close-btn { color: #fff; background: transparent; border-color: rgba(255,255,255,0.2); }
 .close-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
 .lightbox-body { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 60px 48px; }

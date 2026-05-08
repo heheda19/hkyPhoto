@@ -38,15 +38,15 @@ defineProps({ album: { type: Object, required: true } })
 }
 .album-cover {
   aspect-ratio: 4/3;
-  background: #e2e8f0;
+  background: #f5f5f7;
 }
 .album-cover .el-image { width: 100%; height: 100%; }
 .album-cover-placeholder {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
-  color: #94a3b8;
+  color: #86868b;
 }
 .album-info { padding: 14px 16px; }
-.album-info h3 { font-size: 15px; margin-bottom: 4px; color: #1e293b; }
-.album-info span { font-size: 12px; color: #94a3b8; }
+.album-info h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; color: #1d1d1f; }
+.album-info span { font-size: 13px; font-weight: 400; color: #86868b; }
 </style>

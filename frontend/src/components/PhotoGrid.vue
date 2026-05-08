@@ -41,12 +41,12 @@ defineEmits(['photo-click', 'load-more'])
 .empty-state {
   text-align: center;
   padding: 80px 20px;
-  color: #94a3b8;
+  color: #86868b;
   font-size: 16px;
 }
 .loading-more, .load-more {
   text-align: center;
   padding: 24px;
 }
-.load-more .el-button { color: #3b82f6; }
+.load-more .el-button { color: #06c; }
 </style>

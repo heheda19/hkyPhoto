@@ -1,9 +1,6 @@
 <template>
   <div>
-    <h2 class="page-title">MyAlbum</h2>
-    <p class="page-subtitle">个人照片展示</p>
-
-    <section v-if="recentPhotos.length > 0" class="section">
+    <section v-if="recentPhotos.length > 0" class="section" style="margin-top:0">
       <h3 class="section-title">最近上传</h3>
       <PhotoGrid
         :photos="recentPhotos"
@@ -83,12 +80,11 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.page-title { font-size: 28px; font-weight: 700; color: #1e293b; }
-.page-subtitle { color: #64748b; margin-bottom: 32px; font-size: 15px; }
-.section { margin-bottom: 40px; }
-.section-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; border-left: 3px solid #3b82f6; padding-left: 10px; color: #1e293b; }
-.section-footer { margin-top: 16px; text-align: right; }
-.see-all { color: #3b82f6; text-decoration: none; font-size: 14px; }
+.section { margin-bottom: 48px; }
+.section-title { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 20px; color: #1d1d1f; }
+.section-footer { margin-top: 20px; text-align: right; }
+.see-all { color: #06c; text-decoration: none; font-size: 15px; font-weight: 500; }
+.see-all:hover { text-decoration: underline; }
 .album-grid, .location-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

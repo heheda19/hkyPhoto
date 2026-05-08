@@ -1,7 +1,7 @@
 <template>
-  <el-header class="app-header">
+  <header class="app-header">
     <div class="header-inner">
-      <router-link to="/" class="logo">📷 MyAlbum</router-link>
+      <router-link to="/" class="logo">MyAlbum</router-link>
       <nav class="nav-links">
         <router-link to="/albums">相册</router-link>
         <router-link to="/timeline">时间线</router-link>
@@ -9,53 +9,82 @@
         <router-link to="/admin">管理</router-link>
       </nav>
     </div>
-  </el-header>
+  </header>
 </template>
 
 <style scoped>
 .app-header {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 0 16px;
   position: sticky;
   top: 0;
   z-index: 100;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
 }
+
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
+  height: 52px;
+  padding: 0 16px;
 }
+
 .logo {
-  color: #1e293b;
-  font-size: 18px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
   font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #1d1d1f;
   text-decoration: none;
+  transition: opacity 0.25s;
+  font-style: italic;
 }
+.logo:hover {
+  opacity: 0.6;
+}
+
 .nav-links {
   display: flex;
-  gap: 4px;
+  align-items: center;
+  gap: 8px;
 }
+
 .nav-links a {
-  color: #64748b;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #424245;
   text-decoration: none;
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: 6px;
-  font-size: 14px;
-  transition: all 0.2s;
+  transition: color 0.2s, background 0.2s;
 }
-.nav-links a:hover,
+
+.nav-links a:hover {
+  color: #1d1d1f;
+  background: rgba(0, 0, 0, 0.04);
+}
+
 .nav-links a.router-link-exact-active {
-  color: #3b82f6;
-  background: rgba(59, 130, 246, 0.08);
+  color: #1d1d1f;
+  font-weight: 600;
 }
+
 @media (max-width: 640px) {
-  .logo { font-size: 16px; }
-  .nav-links a { padding: 6px 10px; font-size: 12px; }
+  .logo {
+    font-size: 20px;
+    letter-spacing: 0.06em;
+  }
+  .nav-links {
+    gap: 0;
+  }
+  .nav-links a {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
 }
 </style>

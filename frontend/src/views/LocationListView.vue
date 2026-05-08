@@ -30,7 +30,7 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.page-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; color: #1e293b; }
+.page-title { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 28px; color: #1d1d1f; }
 .location-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

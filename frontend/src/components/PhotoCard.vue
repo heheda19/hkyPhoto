@@ -47,7 +47,7 @@ defineEmits(['click'])
 }
 .photo-placeholder {
   aspect-ratio: 4/3;
-  background: #e2e8f0;
+  background: #f5f5f7;
 }
 .photo-overlay {
   position: absolute;

@@ -9,7 +9,7 @@ from .serializers import LoginSerializer
 
 
 class LoginRateThrottle(AnonRateThrottle):
-    rate = '10/hour'
+    rate = '100/hour'
 
 
 @api_view(['POST'])
