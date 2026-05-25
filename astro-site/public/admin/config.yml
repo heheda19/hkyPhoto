@@ -1,0 +1,42 @@
+backend:
+  name: github
+  repo: heheda19/hkyPhoto
+  branch: main
+  base_url: https://oauth-proxy-omega.vercel.app
+  site_domain: http://localhost:4321
+
+local_backend: true   # 本地开发测试用，生产部署时删除此行
+
+media_folder: public/images
+public_folder: /images
+
+locale: zh_Hans
+
+collections:
+  - name: projects
+    label: 项目 / 随手拍
+    label_singular: 项目
+    folder: src/content/projects
+    create: true
+    slug: "{{name}}"
+    fields:
+      - { name: name, label: 名称, widget: string }
+      - { name: type, label: 类型, widget: select, options: ["project", "ongoing"], default: "project" }
+      - { name: year, label: 年份, widget: string, required: false }
+      - { name: description, label: 描述, widget: text, required: false }
+      - { name: photos, label: 照片列表, widget: list, required: false, field: { name: photo, label: 照片 URL, widget: string } }
+      - { name: body, label: 正文, widget: markdown, required: false }
+
+  - name: blog
+    label: 博客
+    label_singular: 博客文章
+    folder: src/content/blog
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { name: title, label: 标题, widget: string }
+      - { name: date, label: 日期, widget: datetime, format: "YYYY-MM-DD" }
+      - { name: excerpt, label: 摘要, widget: text, required: false }
+      - { name: published, label: 发布, widget: boolean, default: true }
+      - { name: firstImage, label: 封面图 URL, widget: string, required: false }
+      - { name: body, label: 正文, widget: markdown, required: false }
